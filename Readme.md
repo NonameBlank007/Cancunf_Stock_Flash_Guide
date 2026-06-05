@@ -31,6 +31,7 @@ Respective to G54:
 
 * Stock ROM downloaded on PC
 * Flash files added inside Extracted ROM folder
+* Ensure Usb Debugging enabled in devloper option
 * Motorola Official drivers installed
 * Platform tools extracted in ROM folder or set in system PATH
 * Ensure Device is detected in bootloader mode
