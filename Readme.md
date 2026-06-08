@@ -13,17 +13,47 @@ It is simply put a mechanism to prevent flashing old firmware.
 Respective to G54:
 * **Pre-ARB:** Before May A14 update → can downgrade only till A13
 
-  * Do NOT relock bootloader on A13
+  * **Do NOT** relock bootloader on A13
   * It is not recommended to lock, but can be used while unlocked
 
 * **ARB:** Post A14 May update:
 
   * Supports A14 May → A15+
-  * Do NOT flash below allowed ARB level or device may hard brick
+  * **Do NOT** flash below allowed ARB level or device **will hardbrick**
+
+Respective to G64:
+* **Pre-ARB:** Before May A14 update
+
+  * **Do NOT** attempt to flash A13, as it didn't ship with fw below A14 like G54
+  * Anything below A14 may will work if pre-arb
+
+* **ARB:** Post A14 May update:
+
+  * Supports A14 May → A15+
+  * **Do NOT** flash below allowed ARB level or device **will hardbrick**
+
+## Check ARB
+
+* Check ARB for Cancunf devices
+* Run:
+
+  ```
+  fastboot getvar version-bootloader
+  ```
+* Output as example:
+
+  ```
+  - version-bootloader[0]: MBM-3.1-cancunf_g_vext-ab328de212-24
+  - version-bootloader[1]: 1234-U1TDS34.94-12-7-2-a1234b
+  ```
+* If number between ```U1TDS34.94-12-7``` -> ```U1TDS34.94-12-7-2```:
+  * Pre-ARB
+* If ```U1TDS34.94-12-7-5``` or above it:
+  * ARB
 
 ## Notes
 * Platform tools must be extracted inside ROM folder or set in environment PATH
-* Use appropriate flash file for flashing
+* Use appropriate flash file for flashing from release: [Link](https://github.com/NonameBlank007/Cancunf_Stock_Flash_Guide/releases/tag/cancunf_flash_files)
 * Install drivers if needed:
   [Motorola Official Drivers](https://motorola-global-portal.custhelp.com/euf/assets/downloads/Motorola_Mobile_Drivers_64bit.msi)
 
@@ -43,14 +73,15 @@ Respective to G54:
 
   * If not detected, install motorola drivers and restart pc
 
-* Flash using correct `flashfile.bat`:
+* Flash using correct `flash_file.bat`:
 
-  * A14 → use A14 flashfile
-  * A15 → use A15 flashfile
+  * A13 → use A13 flash_file-A13
+  * A14 → use A14 flash_file-A14
+  * A15 → use A15 flash_file-A15
 
 * Match ROM version with correct **ARB level**
 * Be inside ROM folder and check device connected
-* Double click on flashfile to start flashing
+* Double click on ```flash_file.bat``` to start flashing
   * You can mannualy flash files with fastboot too
 * After flashing done
   * Navigate in bootloder
@@ -99,7 +130,7 @@ Respective to G54:
 ---
 * Press Power button from that screen to Power Off
 * Boot to bootloader
-* Re-flash same stock ROM using flashfile
+* Re-flash same stock ROM using flash_file
 * Ensure correct ARB rules
 * Reboot to system (skip wipe this time)
 * Skip setup as much as possible
@@ -110,9 +141,9 @@ Respective to G54:
 
 * Complete setup
 * Go to Developer Options
-* OEM Unlocking can now be disabled and not greyed out
-* After toggle disable reboot to activate security by motorola
-* Enjoy Device is locked
+* OEM Unlocking can now be disabled
+* Disable oem unlocking and reboot
+* Enjoy Device is now locked
 * To fill both slots do OTA once
 
 # License
