@@ -166,3 +166,6 @@ The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 ```
 Read Full LIcense: [Link](LICENSE)
+
+# Credit
+* Thanks [Arpit Jaiswal](https://github.com/arpiitjaiswal) for helping with flash instructions and providing flash files
