@@ -53,6 +53,9 @@ Respective to G64:
 
 ## Notes
 * Platform tools must be extracted inside ROM folder or set in environment PATH
+  * Downloaded ROM should be 1 or 2 OTA lower than last released update for that android version
+    * Example: ```U1TDS34.94-12-9-10-2``` last update for A14. So, use ```U1TDS34.94-12-9-10``` or ```U1TDS34.94-12-7-7```
+    * Remember it has to be always under ARB rules
 * Use appropriate flash file for flashing from release: [Link](https://github.com/NonameBlank007/Cancunf_Stock_Flash_Guide/releases/tag/cancunf_flash_files)
 * Install drivers if needed:
   [Motorola Official Drivers](https://motorola-global-portal.custhelp.com/euf/assets/downloads/Motorola_Mobile_Drivers_64bit.msi)
@@ -92,7 +95,7 @@ Respective to G64:
 * If dead Android screen appears:
 
   * **Hold Power + tap Volume Up once**
-  * It will boot yout to true recovery
+  * It will boot you to true recovery
 
 * In true recovery:
 
@@ -113,8 +116,27 @@ Respective to G64:
 
 ## Relock Bootloader
 
-* Boot to bootloader
-* Run:
+* Boot to bootloader on stock
+* Check current slot, Run:
+  
+  ```
+  fastboot getvar current-slot
+  ```
+* Output if:
+  
+  ```
+  current-slot: b
+  ```
+  * Power on device and do OTA to make current-slot: a
+  * Then after proceed to locking
+* Output if:
+
+  ```
+  current-slot: a
+  ```
+  * Proceed to lock
+
+* To lock, Run:
 
   ```
   fastboot oem lock
@@ -144,7 +166,8 @@ Respective to G64:
 * OEM Unlocking can now be disabled
 * Disable oem unlocking and reboot
 * Enjoy Device is now locked
-* To fill both slots do OTA once
+* To fill both slots do OTA once 
+  * If you did before for locking bootloder, Then **skip**
 
 # License
 
