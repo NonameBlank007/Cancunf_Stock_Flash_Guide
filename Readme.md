@@ -53,8 +53,8 @@ Respective to G64:
 
 ## Notes
 * Platform tools must be extracted inside ROM folder or set in environment PATH
-  * Downloaded ROM should be 1 or 2 OTA lower than last released update for that android version
-    * Example: ```U1TDS34.94-12-9-10-2``` last update for A14. So, use ```U1TDS34.94-12-9-10``` or ```U1TDS34.94-12-7-7```
+  * Downloaded ROM to be flashed should be 1–2 OTA builds behind the target version you want to be on in stock, since the final upgrade to that version will be done via OTA rather than direct flashing.
+    * Example: Target to be on stock: ```U1TDS34.94-12-9-10-2``` last ARB update for A14. So, use ```U1TDS34.94-12-9-10``` or ```U1TDS34.94-12-7-7``` to flash
     * Remember it has to be always under ARB rules
 * Use appropriate flash file for flashing from release: [Link](https://github.com/NonameBlank007/Cancunf_Stock_Flash_Guide/releases/tag/cancunf_flash_files)
 * Install drivers if needed:
@@ -166,7 +166,7 @@ Respective to G64:
 * OEM Unlocking can now be disabled
 * Disable oem unlocking and reboot
 * Enjoy Device is now locked
-* To fill both slots do OTA once 
+* To fill both slots do OTA once
   * If you did before for locking bootloder, Then **skip**
 
 # License
