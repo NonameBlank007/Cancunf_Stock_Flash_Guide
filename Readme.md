@@ -48,7 +48,7 @@ Respective to G64:
   ```
 * If number between ```U1TDS34.94-12-7``` -> ```U1TDS34.94-12-7-2```:
   * Pre-ARB
-* If ```U1TDS34.94-12-7-5``` or above it:
+* If ```U1TDS34.94-12-7-5```, ```V1TD35H.83_20_5``` or above it:
   * ARB
 
 ## Notes
