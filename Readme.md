@@ -21,6 +21,10 @@ Respective to G54:
   * Supports A14 May → A15+
   * **Do NOT** flash below allowed ARB level or device **will hardbrick**
 
+* **ARB V2:** Post A15 September patch
+  * September patch [V1TDS35H.83-20-5-14, V1TDS35H.83-20-5-8-2-1-3]
+  * If device is above or on the patch **DO NOT** flash below it or A14 builds of stock rom or **it will hardbrick**
+
 Respective to G64:
 * **Pre-ARB:** Before May A14 update
 
@@ -31,6 +35,10 @@ Respective to G64:
 
   * Supports A14 May → A15+
   * **Do NOT** flash below allowed ARB level or device **will hardbrick**
+
+* **ARB V2:** Post A15 September patch
+  * September patch [V1TDS35H.83-20-5-14, V1TDS35H.83-20-5-8-2-1-3]
+  * If device is above or on the patch **DO NOT** flash below it or A14 builds of stock rom or **it will hardbrick**
 
 ## Check ARB
 
@@ -50,14 +58,16 @@ Respective to G64:
   * Pre-ARB
 * If ```U1TDS34.94-12-7-5```, ```V1TD35H.83_20_5``` or above it:
   * ARB
+  * ARB V2
 
 ## Notes
 * Platform tools must be extracted inside ROM folder or set in environment PATH
-  * Downloaded ROM to be flashed should be 1–2 OTA builds behind the target version you want to be on in stock, since the final upgrade to that version will be done via OTA rather than direct flashing.
+  * Downloaded ROM you want to flash should be 2-3 builds older than version you want on stock, It is to ensure you have backup for pre-flash validation error and able to OTA update to fill slots, when you boot.
+  * It is better to OTA to version you want to stay stock on than direct flashing.
     * Example: Target to be on stock: ```U1TDS34.94-12-9-10-2``` last ARB update for A14. So, use ```U1TDS34.94-12-9-10``` or ```U1TDS34.94-12-7-7``` to flash
-    * It is recommended, But fine if you can't find 1-2 OTA older builds. Just ensure [you meet this slot requirment](https://github.com/NonameBlank007/Cancunf_Stock_Flash_Guide/blob/main/Readme.md#relock-bootloader) before lock.
-      * If the requirement is not met and the active slot is B, re-flash the same build and follow the steps below once more to ensure the device boots from slot A.
-    * Remember it has to be always under ARB rules
+    * It is recommended, But fine if you can't find 2-3 OTA older builds. Just ensure [you meet this slot requirment](#relock-bootloader) before lock.
+      * Ensure device Boots from Slot A.
+    * Remember to be always under ARB rules
 * Use appropriate flash file for flashing from release: [Link](https://github.com/NonameBlank007/Cancunf_Stock_Flash_Guide/releases/tag/cancunf_flash_files)
 * Install drivers if needed:
   [Motorola Official Drivers](https://motorola-global-portal.custhelp.com/euf/assets/downloads/Motorola_Mobile_Drivers_64bit.msi)
@@ -73,7 +83,8 @@ Respective to G64:
 
 ## Flashing Steps
 
-* Extract stock ROM on PC and place flash file inside it
+* Extract stock ROM on PC
+* Place extracted flash file inside the ROM folder
 * Ensure device is connected and detected in bootloader
 
   * If not detected, install motorola drivers and restart pc
@@ -115,6 +126,7 @@ Respective to G64:
 * Turn on devloper option
   * Enable **USB Debugging**
   * Ensure **OEM Unlocking should be ON and greyed out**
+  * If button is greyed out but not toggled ON, It's not a concern if device is unlocked.
 
 ## Relock Bootloader
 
@@ -129,7 +141,8 @@ Respective to G64:
   ```
   current-slot: b
   ```
-  * Power on device and do OTA to make current-slot: a
+  * Option a: Power on device and do OTA to make current-slot: a
+  * Option b: If you dont want to OTA, flash same build again
   * Then after proceed to locking
 * Output if:
 
@@ -144,6 +157,7 @@ Respective to G64:
   fastboot oem lock
   ```
 * In Phone Screen select lock/yes
+  * navigate with volume keys and power button to enter.
 * After lock done, From bootloder boot into recovery
 * Wipe data again
 * Reboot to system
