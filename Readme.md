@@ -62,10 +62,10 @@ Respective to G64:
 
 ## Notes
 * Platform tools must be extracted inside ROM folder or set in environment PATH
-  * Downloaded ROM you want to flash should be 2-3 builds older than version you want on stock, It is to ensure you have backup for pre-flash validation error and able to OTA update to fill slots, when you boot.
+  * Downloaded ROM you want to flash should be 1-2 builds older than version you want on stock, It is to ensure you have backup for pre-flash validation error and able to OTA update to fill slots, when you boot.
   * It is better to OTA to version you want to stay stock on than direct flashing.
     * Example: Target to be on stock: ```U1TDS34.94-12-9-10-2``` last ARB update for A14. So, use ```U1TDS34.94-12-9-10``` or ```U1TDS34.94-12-7-7``` to flash
-    * It is recommended, But fine if you can't find 2-3 OTA older builds. Just ensure [you meet this slot requirment](#relock-bootloader) before lock.
+    * It is recommended, But fine if you can't find 1-2 OTA older builds. Just ensure [you meet this slot requirment](#relock-bootloader) before lock.
       * Ensure device Boots from Slot A.
     * Remember to be always under ARB rules
 * Use appropriate flash file for flashing from release: [Link](https://github.com/NonameBlank007/Cancunf_Stock_Flash_Guide/releases/tag/cancunf_flash_files)
