@@ -10,34 +10,39 @@
 ## Anti-Rollback (ARB)
 It is simply put a mechanism to prevent flashing old firmware.
 
-Respective to G54:
-* **Pre-ARB:** Before May A14 update → can downgrade only till A13
+* Read [Check ARB](#check-arb) for checking device arb and read bellow to understand arb limits respective to your version and device.
 
+Respective to G54:
+* **Pre-ARB:** Before May A14 update or Secure bootloder `0x0` → can downgrade only till A13
+
+  * A13 till A14 March -> U1TDS34.94-12-7-2
   * **Do NOT** relock bootloader on A13
   * It is not recommended to lock, but can be used while unlocked
 
 * **ARB:** Post A14 May update:
 
-  * Supports A14 May → A15+
+  * Supports A14 May and Secure bootloder `0x1` → A15 July 2026 patch.
+    * A15 July -> V1TDS35H.83-20-5-12
   * **Do NOT** flash below allowed ARB level or device **will hardbrick**
 
 * **ARB V2:** Post A15 September patch
-  * September patch [V1TDS35H.83-20-5-14, V1TDS35H.83-20-5-8-2-1-3]
-  * If device is above or on the patch **DO NOT** flash below it or A14 builds of stock rom or **it will hardbrick**
+  * September patch [V1TDS35H.83-20-5-14, V1TDS35H.83-20-5-8-2-1-3] and Secure bootloder `0x2`
+  * If device is above or on the patch **DO NOT** flash below it or any A14 builds of stock rom or **it will hardbrick**
 
 Respective to G64:
-* **Pre-ARB:** Before May A14 update
+* **Pre-ARB:** Before May A14 update or Secure bootloder `0x0`
 
   * **Do NOT** attempt to flash A13, as it didn't ship with fw below A14 like G54
   * Anything below A14 may will work if pre-arb
 
 * **ARB:** Post A14 May update:
 
-  * Supports A14 May → A15+
+  * Supports A14 May and Secure bootloder `0x1` → A15 July 2026 patch.
+    * A15 July -> V1TDS35H.83-20-5-12
   * **Do NOT** flash below allowed ARB level or device **will hardbrick**
 
 * **ARB V2:** Post A15 September patch
-  * September patch [V1TDS35H.83-20-5-14, V1TDS35H.83-20-5-8-2-1-3]
+  * September patch [V1TDS35H.83-20-5-14, V1TDS35H.83-20-5-8-2-1-3] and Secure bootloder `0x2`
   * If device is above or on the patch **DO NOT** flash below it or A14 builds of stock rom or **it will hardbrick**
 
 ## Check ARB
@@ -47,18 +52,26 @@ Respective to G64:
 
   ```
   fastboot getvar version-bootloader
+  fastboot oem read_sv
   ```
 * Output as example:
 
   ```
   - version-bootloader[0]: MBM-3.1-cancunf_g_vext-ab328de212-24
   - version-bootloader[1]: 1234-U1TDS34.94-12-7-2-a1234b
+  - (bootloader) Group0 (Secure bootloader) = 0x2
   ```
-* If number between ```U1TDS34.94-12-7``` -> ```U1TDS34.94-12-7-2```:
-  * Pre-ARB
-* If ```U1TDS34.94-12-7-5```, ```V1TD35H.83_20_5``` or above it:
-  * ARB
-  * ARB V2
+* Pre-ARB:
+  * If version-bootloader[1]: between ```U1TDS34.94-12-7``` -> ```U1TDS34.94-12-7-2```
+  * If Secure bootloder `0x0`:
+
+* ARB:
+  * If version-bootloader[1]: ```U1TDS34.94-12-7-5```, ```V1TD35H.83_20_5``` -> ```V1TDS35H.83-20-5-12```
+  * If Secure bootloderr `0x1`:
+
+* ARB V2:
+  * If version-bootloader[1]: ```V1TDS35H.83-20-5-14```, ```V1TDS35H.83-20-5-8-2-1-3``` -> above
+  * If Secure bootloderr `0x2`:
 
 ## Notes
 * Platform tools must be extracted inside ROM folder or set in environment PATH
