@@ -10,7 +10,7 @@
 ## Anti-Rollback (ARB)
 It is simply put a mechanism to prevent flashing old firmware.
 
-* Read [Check ARB](#check-arb) for checking device arb and read bellow to understand arb limits respective to your version and device.
+* Read [Check ARB](#check-arb) for checking device arb and read below to understand arb limits respective to your version and device.
 
 Respective to G54:
 * **Pre-ARB:** Before May A14 update or Secure bootloder `0x0` → can downgrade only till A13
